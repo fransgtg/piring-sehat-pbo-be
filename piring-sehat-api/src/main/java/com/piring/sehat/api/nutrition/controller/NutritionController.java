@@ -18,12 +18,26 @@ public class NutritionController {
     @Autowired
     private NutritionService nutritionService;
 
+    // ==========================================
+    // DOKUMENTASI FITUR SEARCH (Controller Layer)
+    // ==========================================
+    // Endpoint REST API untuk menerima permintaan pencarian dari Frontend (React).
+    // Menerima parameter URL 'q' (misal: /api/nutrition/search?q=ayam)
+    // 
+    // ==========================================
+    // PILAR OOP 4: POLIMORFISME (Polymorphism)
+    // ==========================================
+    // Tipe kembalian `ResponseEntity<?>` menggunakan wildcard. Ini adalah bentuk 
+    // polimorfisme di mana method dapat mengembalikan tipe respons yang berbeda-beda
+    // (misalnya mereturn `ResponseEntity.badRequest` saat error atau `ResponseEntity.ok` saat sukses)
+    // menggunakan satu interface/tipe umum, tergantung pada kondisi yang terjadi saat runtime.
     @GetMapping("/search")
     public ResponseEntity<?> searchFood(@RequestParam("q") String query) {
         if (query == null || query.trim().isEmpty()) {
             return ResponseEntity.badRequest().body(Map.of("error", "Query pencarian tidak boleh kosong"));
         }
 
+        // Memanggil Service layer untuk menangani logika bisnis pencarian
         List<Nutrition> results = nutritionService.searchFoodByName(query.trim());
         
         // Membungkus respons agar mirip dengan struktur sebelumnya

@@ -18,7 +18,13 @@ public class Nutrition {
     private String image;
 
     // ==========================================
-    // GETTER & SETTER (Wajib ada agar terbaca sebagai JSON)
+    // PILAR OOP 1: ENKAPSULASI (Encapsulation)
+    // ==========================================
+    // Variabel atau atribut di atas dideklarasikan sebagai `private` untuk 
+    // menyembunyikan status internal dari objek Nutrition.
+    // Akses ke variabel-variabel tersebut hanya diberikan melalui method `public`
+    // yaitu GETTER & SETTER di bawah ini. Hal ini memastikan keamanan data dan 
+    // mencegah modifikasi langsung yang tidak terkontrol dari luar kelas.
     // ==========================================
     
     public Long getId() { return id; }
